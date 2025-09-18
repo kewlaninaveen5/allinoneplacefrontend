@@ -10,33 +10,22 @@ const ProductList = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    console.log("CurrentlyShowingProducts: ", CurrentlyShowingProducts)
-    setProducts(CurrentlyShowingProducts)
-    setLoading(false)
-    
-  }, [CurrentlyShowingProducts]);
-  
-  useEffect(()=> {
-    // setLoading(true)
-    // setTimeout(() => {
+    setLoading(true)
+    if (CurrentlyShowingProducts && CurrentlyShowingProducts.length > 0) {
       setProducts(CurrentlyShowingProducts)
       setLoading(false)
-    // }, 500);
-    
-  },[CurrentlyShowingProducts])
-
+    }
+  }, [CurrentlyShowingProducts]);
 
   const showProductDetails = (productId) => {
     navigate(`/product/${productId}`);
   };
 
-  // Display loading screen
   if (loading) {
     return (
       <div className="loading-screen">
         <div className="loading-spinner"></div>
-        <p className="loading-text">Loading Your Products. Test Versions take extra time, Please wait a little longer</p>
-        {/* <p className="loading-text">Test versions are usually slow: just a few more moments! Please wait.</p> */}
+        <p className="loading-text">Loading Your Products. Free Servers are Slow, Please wait a little longer</p>
       </div>
     );
   }
